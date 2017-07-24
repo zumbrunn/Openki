@@ -421,6 +421,10 @@ UpdateMethods = {
 
 Meteor.methods({
 
+	'sendMessageToAllMembers': (courseId, subject, body) => {
+		console.log('blubb');
+	},
+
 	change_comment: function(courseId, comment) {
 		check(courseId, String);
 		check(comment, String);

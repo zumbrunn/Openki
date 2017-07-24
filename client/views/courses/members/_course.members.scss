@@ -79,3 +79,13 @@
 .course-member-comment .editable {
 	@include td-padding(left, 0 !important);
 }
+
+.js-mail-all-members {
+	float: right;
+	display: block;
+	&::after {
+		display: block;
+		content: ' ';
+		clear: both;
+	}
+}

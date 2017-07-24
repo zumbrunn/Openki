@@ -9,8 +9,16 @@
 					other {# Participants}
 				}
 			{{/mf}}
+			{{#if isTeamMember}}
+				<div class="js-mail-all-members" href="#">
+					<span class="fa fa-envelope fa-fw" aria-hidden="true"></span>
+				</div>
+			{{/if}}
 		</h4>
 	</div>
+	{{#if makeMemberNotification}}
+		{{> courseMemberNotification course=this course=..}}
+	{{/if}}
 	{{#if members}}
 		<div class="course-members">
 			{{#each sortedMembers}}

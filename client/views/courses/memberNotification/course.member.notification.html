@@ -1,0 +1,28 @@
+<template name="courseMemberNotification">
+  <form class="form member-notification-form">
+    <div class="discussion-edit-header">
+      <strong>{{mf 'course.member.notification.heading' 'Notification to all Members'}}</strong>
+    </div>
+    <div class="discussion-edit-body">
+      <div class="form-group">
+        <input class="js-post-title discussion-edit-title form-control"
+          type="text"
+          placeholder="{{mf 'course.member.notification.subject' 'Subject'}}"
+          value="{{subject}}"/>
+      </div>
+      <div class="form-group">
+        <textarea
+          class="js-post-text discussion-edit-text form-control"
+          placeholder="{{mf 'course.member.notification.text_placeholder' 'Your note'}}"
+        >{{text}}</textarea>
+      </div>
+      <div class="form-actions">
+        {{> buttonCancel event="js-member-notification-cancel"}}
+        <div class="btn btn-save js-member-notification-send">
+          <span class="fa fa-send fa-fw" aria-hidden="true"></span>
+          {{mf 'course.member.notification.send' 'Send!'}}
+        </div >
+      </div>
+    </div>
+  </form>
+</template>

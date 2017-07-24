@@ -1,11 +1,16 @@
 Template.courseMembers.onCreated(function() {
 	this.increaseBy = 10;
+	this.makeMemberNotification = new ReactiveVar(false);
 	this.membersLimit = new ReactiveVar(this.increaseBy);
 });
 
 Template.courseMembers.helpers({
 	howManyEnrolled: function() {
 		return this.members.length;
+	},
+
+	isTeamMember: function() {
+		return hasRoleUser(this.members, 'team', Meteor.userId());
 	},
 
 	sortedMembers: function() {
@@ -33,6 +38,10 @@ Template.courseMembers.helpers({
 
 	increaseBy: function() {
 		return Template.instance().increaseBy;
+	},
+
+	makeMemberNotification: function() {
+		return Template.instance().makeMemberNotification.get();
 	}
 });
 
@@ -41,6 +50,10 @@ Template.courseMembers.events({
 		var membersLimit = instance.membersLimit;
 
 		membersLimit.set(membersLimit.get() + instance.increaseBy);
+	},
+
+	'click .js-mail-all-members': function(event, instance) {
+		Template.instance().makeMemberNotification.set(!instance.makeMemberNotification.curValue);
 	}
 });
 
@@ -113,4 +126,5 @@ Template.courseMember.events({
 		Meteor.call("remove_role", this.course._id, this.member.user, 'team');
 		return false;
 	}
+
 });
