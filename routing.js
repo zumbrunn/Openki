@@ -1,6 +1,7 @@
 import '/imports/Profile.js';
 import '/imports/LocalTime.js';
 import Metatags from '/imports/Metatags.js';
+import '/imports/analytics/IronRouter.js';
 
 Router.configure({
 	layoutTemplate: 'layout',
